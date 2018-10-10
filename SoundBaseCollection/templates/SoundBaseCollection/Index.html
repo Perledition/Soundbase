@@ -1,0 +1,17 @@
+{% extends 'soundbasecollection/Basic.html'%}
+
+{% block body %}
+<div class="container col-lg-10 col-md-4">
+  <h2 class="text-center m-5">Gib ein Keyword ein, um das crawlen zu beginnen</h2>
+  <form class="container col-lg-10 col-md-4" action="#" method="POST" role="form">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+      <input class="form-control" type="Serch" placeholder="z.B. Deep House" aria-label="Search" name="search" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button" id="button-addon2">Suchen</button>
+      </div>
+    </div>
+  </form>
+  <div class="container col-lg-10 col-md-4"><p class="text-center text-secondary">Du hast bereits 0 neue, geile Tracks gefunden</p></div>
+</div>
+{% endblock %}

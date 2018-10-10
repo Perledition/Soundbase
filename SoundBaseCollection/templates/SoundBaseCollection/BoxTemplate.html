@@ -1,0 +1,188 @@
+{% extends 'soundbasecollection/Basic.html'%}
+
+{% block body %}
+<h2 class="text-center p-5">Hier findest du alle neuen Sounds für deine {{Genere}} Musik</h2>
+<div class="panel panel-primary p-4 rounded col-10 mx-auto border-bottom">
+  {% include 'SoundBaseCollection/js.html' %}
+     <div class="row text-center">
+         <div class="col-lg-3 col-md-12">
+             <!--Input für die Charts-->
+             <canvas id="wd"></canvas>
+             <div class="donut-inner">
+                 <p class="effort">22%</p>
+             </div>
+             <h5 class="text-center text-secondary">Rest Kapazität</h5>
+             <script>
+             var ctx = document.getElementById("wd").getContext('2d');
+             var data = {
+             datasets: [
+                 {
+                     data: [22,100-22],
+                     backgroundColor: [
+                         "rgba(255, 73, 0, 1)",
+                         "rgba(204, 204, 204, 0.5)",
+                     ],
+                     hoverBackgroundColor: [
+                         "rgba(36, 112, 250, 1)",
+                         "rgba(0, 0, 0, 0)",
+                     ],
+                     hoverBorderColor: [,"rgba(0, 0, 0, 0)"]
+                 }]
+             };
+
+             var myChart = new Chart(ctx, {
+                 type: 'doughnut',
+                 data: data,
+                 options: {
+                   legend: {
+                     display: false
+                   },
+                   tooltips: {
+                     enabled: false
+                   },
+                   cutoutPercentage: 80,
+                 }
+             });
+             </script>
+         </div>
+         <div class="col-lg-3 col-md-12">
+             <!--Input für die Charts-->
+             <canvas id="wnd"></canvas>
+             <div class="donut-inner">
+                 <p class="effort">22%</p>
+             </div>
+             <h5 class="text-center text-secondary">Return on Post</h5>
+             <script>
+             var ctx = document.getElementById("wnd").getContext('2d');
+             var data = {
+             datasets: [
+                 {
+                     data: [22,100-22],
+                     backgroundColor: [
+                         "rgba(255, 73, 0, 1)",
+                         "rgba(204, 204, 204, 0.5)",
+                     ],
+                     hoverBackgroundColor: [
+                         "rgba(36, 112, 250, 1)",
+                         "rgba(0, 0, 0, 0)",
+                     ],
+                     hoverBorderColor: [,"rgba(0, 0, 0, 0)"]
+                 }]
+             };
+
+             var myChart = new Chart(ctx, {
+                 type: 'doughnut',
+                 data: data,
+                 options: {
+                   legend: {
+                     display: false
+                   },
+                   tooltips: {
+                     enabled: false
+                   },
+                   cutoutPercentage: 80,
+                 }
+             });
+             </script>
+         </div>
+         <div class="col-lg-3 col-md-12">
+             <!--Input für die Charts-->
+             <canvas id="nwd"></canvas>
+             <div class="donut-inner">
+                 <p class="effort">22%</p>
+             </div>
+             <h5 class="text-center text-secondary">Durchschnittliche Präzision</h5>
+             <script>
+             var ctx = document.getElementById("nwd").getContext('2d');
+             var data = {
+             datasets: [
+                 {
+                     data: [22,100-22],
+                     backgroundColor: [
+                         "rgba(255, 73, 0, 1)",
+                         "rgba(204, 204, 204, 0.5)",
+                     ],
+                     hoverBackgroundColor: [
+                         "rgba(36, 112, 250, 1)",
+                         "rgba(0, 0, 0, 0)",
+                     ],
+                     hoverBorderColor: [,"rgba(0, 0, 0, 0)"]
+                 }]
+             };
+
+             var myChart = new Chart(ctx, {
+                 type: 'doughnut',
+                 data: data,
+                 options: {
+                   legend: {
+                     display: false
+                   },
+                   tooltips: {
+                     enabled: false
+                   },
+                   cutoutPercentage: 80,
+                 }
+             });
+             </script>
+         </div>
+         <div class="col-lg-3 col-md-12">
+             <!--Input für die Charts-->
+             <canvas id="nwnd"></canvas>
+             <div class="donut-inner">
+                 <p class="effort">314,- €</p>
+             </div>
+             <h5 class="text-center text-secondary">Income</h5>
+             <script>
+             var ctx = document.getElementById("nwnd").getContext('2d');
+             var data = {
+             datasets: [
+                 {
+                     data: [314,500-314],
+                     backgroundColor: [
+                         "rgba(255, 73, 0, 1)",
+                         "rgba(204, 204, 204, 0.5)",
+                     ],
+                     hoverBackgroundColor: [
+                         "rgba(36, 112, 250, 1)",
+                         "rgba(0, 0, 0, 0)",
+                     ],
+                     hoverBorderColor: [,"rgba(0, 0, 0, 0)"]
+                 }]
+             };
+
+             var myChart = new Chart(ctx, {
+                 type: 'doughnut',
+                 data: data,
+                 options: {
+                   legend: {
+                     display: false
+                   },
+                   tooltips: {
+                     enabled: false
+                   },
+                   cutoutPercentage: 80,
+                 }
+             });
+             </script>
+         </div>
+     </div>
+ </div>
+<div class="container col-lg-10 col-md-4">
+  {% for sound in datapoint %}
+  <div class="card m-5">
+    <div class="card-header">
+      {{sound.Artist}}
+    </div>
+    <div class="card-body">
+      <form <action="#" method="POST" role="form">
+        {% csrf_token %}
+        <h5 class="card-title">{{sound.song_title}}</h5>
+        <p class="card-text"><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="{{sound.link}}"></iframe></p>
+        <button href="#" class="btn btn-success float-right m-2">Take it</button>
+        <button href="#" class="btn btn-danger float-right m-2">Leave it</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
