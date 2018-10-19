@@ -209,7 +209,9 @@ class Crawler(MainClass):
 
     # METHODEN
 
-    #
+    # Methode wird ein Keyword übergeben, welches dann in die Soundcloud
+    # Suchmaske eingefügt wird, um so initale Links für einen Crawler-Run
+    # zu generieren
     def get_initial_links(self, keyword):
 
             try:
