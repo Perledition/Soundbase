@@ -169,6 +169,7 @@
  </div>
 <div class="container col-lg-10 col-md-4">
   {% for sound in datapoint %}
+  {% if sound.used != 1 %}
   <div class="card m-5">
     <div class="card-header">
       {{sound.Artist}}
@@ -177,12 +178,13 @@
       <form <action="#" method="POST" role="form">
         {% csrf_token %}
         <h5 class="card-title">{{sound.song_title}}</h5>
-        <p class="card-text"><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="{{sound.link}}"></iframe></p>
+        <p class="card-text"><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src={{sound.uri}}></iframe></p>
         <button href="#" class="btn btn-success float-right m-2">Take it</button>
         <button href="#" class="btn btn-danger float-right m-2">Leave it</button>
       </form>
     </div>
   </div>
+  {% endif %}
   {% endfor %}
 </div>
 {% endblock %}
