@@ -1,0 +1,2 @@
+sel.py ist das Hauptskript. Unter credentials.py noch Google Credentials eintragen 
+(Es kann sein, dass Google vorher noch den Rechner bestätigt haben will. Das einmal machen, dann sollte das Skript laufen)
